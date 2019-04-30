@@ -56,7 +56,6 @@ config_udp2raw(){
 config_bat(){
     ip=`curl http://whatismyip.akamai.com`
     mkdir -p /root/bat/${port1}_bat/
-    cd /root/bat/${port1}_bat/
     curl -o /root/bat/${port1}_bat/start.bat https://raw.githubusercontent.com/lmc999/Udp2rawOneKey/master/start.bat
     curl -o /root/bat/${port1}_bat/stop.bat https://raw.githubusercontent.com/lmc999/Udp2rawOneKey/master/stop.bat
     sed -i "s/44.55.66.77/${ip}/" /root/bat/${port1}_bat/start.bat
