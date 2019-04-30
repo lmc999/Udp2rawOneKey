@@ -48,7 +48,7 @@ get_ip(){
 
 config_udp2raw(){
     echo -e "${Green}请输入udp2raw配置信息！${Font}"
-	echo -e "${Blue}本脚本默认串联密码为passwd${Font}"
+    echo -e "${Blue}本脚本默认串联密码为passwd${Font}"
     read -p "请输入本地服务端口:" port1
     read -p "请输入远程串联端口:" port2
 }
@@ -56,11 +56,11 @@ config_udp2raw(){
 config_bat(){
     ip=`curl http://whatismyip.akamai.com`
     mkdir -p /root/bat/${port1}_bat/
-	cd /root/bat/${port1}_bat/
+    cd /root/bat/${port1}_bat/
     curl -o /root/bat/${port1}_bat/start.bat https://raw.githubusercontent.com/lmc999/Udp2rawOneKey/master/start.bat
     curl -o /root/bat/${port1}_bat/stop.bat https://raw.githubusercontent.com/lmc999/Udp2rawOneKey/master/stop.bat
-	sed -i "s/44.55.66.77/${ip}/" /root/bat/${port1}_bat/start.bat
-	sed -i "s/9898/${port2}/" /root/bat/${port1}_bat/start.bat
+    sed -i "s/44.55.66.77/${ip}/" /root/bat/${port1}_bat/start.bat
+    sed -i "s/9898/${port2}/" /root/bat/${port1}_bat/start.bat
 }
 
 start_udp2raw(){
