@@ -67,15 +67,13 @@ start_udp2raw(){
 	nohup udp2raw -s -l0.0.0.0:${port2} -r 127.0.0.1:${port1} --raw-mode faketcp -a -k passwd >udp2raw.log 2>&1 &
     if [ "${OS}" == 'CentOS' ];then
         sed -i '/exit/d' /etc/rc.d/rc.local
-        echo "nohup udp2raw -s -l0.0.0.0:${port2} -r 127.0.0.1:${port1} --raw-mode faketcp -a -k passwd >udp2raw.log 2>&1 &
-        " >> /etc/rc.d/rc.local
+        echo "nohup udp2raw -s -l0.0.0.0:${port2} -r 127.0.0.1:${port1} --raw-mode faketcp -a -k passwd >udp2raw.log 2>&1 &" >> /etc/rc.d/rc.local
 	echo "sleep 2
 	" >> /etc/rc.d/rc.local
         chmod +x /etc/rc.d/rc.local
     elif [ -s /etc/rc.local ]; then
         sed -i '/exit/d' /etc/rc.local
-        echo "nohup udp2raw -s -l0.0.0.0:${port2} -r 127.0.0.1:${port1} --raw-mode faketcp -a -k passwd >udp2raw.log 2>&1 &
-        " >> /etc/rc.local
+        echo "nohup udp2raw -s -l0.0.0.0:${port2} -r 127.0.0.1:${port1} --raw-mode faketcp -a -k passwd >udp2raw.log 2>&1 &" >> /etc/rc.local
 	echo "sleep 2
 	" >> /etc/rc.local
         chmod +x /etc/rc.local
@@ -109,7 +107,8 @@ echo "#!/bin/sh -e
 #
 # By default this script does nothing.
 " > /etc/rc.local
-echo "nohup udp2raw -s -l0.0.0.0:${port2} -r 127.0.0.1:${port1} --raw-mode faketcp -a -k passwd >udp2raw.log 2>&1 &
+echo "nohup udp2raw -s -l0.0.0.0:${port2} -r 127.0.0.1:${port1} --raw-mode faketcp -a -k passwd >udp2raw.log 2>&1 &" >> /etc/rc.local
+echo "sleep 2
 " >> /etc/rc.local
 chmod +x /etc/rc.local
 systemctl enable rc-local >/dev/null 2>&1
